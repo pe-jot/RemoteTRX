@@ -1,0 +1,13 @@
+[Unit]
+Description=CI-V bridge
+Requires=network.target talkkonnect.target
+After=multi-user.target
+AllowIsolate=true
+
+[Service]
+ExecStart=/home/pi/CIVBridge
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
