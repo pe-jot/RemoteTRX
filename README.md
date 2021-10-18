@@ -31,6 +31,8 @@ static domain_name_servers=10.0.0.1 8.8.8.8
 
 #### OpenVPN
 
+*Optional, but strongly recommended when connecting to the internet. OpenVPN is offering a point-to-point service, however any other provider may be suitable, too. A service only offering "secure internet connection" or similar is NOT what needed in this case.*
+
 ```shell
 apt-get install openvpn
 ```
@@ -47,6 +49,8 @@ Then issue a `reboot`.
 
 #### Mumble Server
 
+*Optional if some external Mumble server is being used (e.g. in Hamnet,...).*
+
 ```shell
 apt-get install mumble-server
 dpkg-reconfigure mumble-server
@@ -57,11 +61,13 @@ Modify parameters `welcometext` and `registerName` to your desire.
 
 #### talKKonnect
 
+*Mumble client with some extra features to handle PTT, etc. operations.*
+
 see: https://github.com/talkkonnect/talkkonnect for build, installation and configuration instructions.
 
 Start talKKonnect for testing (with su): `/home/talkkonnect/bin/talkkonnect`
 
-* Apply custom configuration of `talkkonnect.xml.patch` accordingly.
+* Apply custom configuration of `talkkonnect.xml` accordingly.
 
 ###### Install talKKonnect as a service:
 ```shell
@@ -73,6 +79,9 @@ systemctl start talkkonnect.service
 ```
 
 #### nginx (Webserver)
+
+*Provides the web interface and routes websocket data to CIVBridge.*
+
 ```shell
 apt-get install nginx
 vi /etc/nginx/nginx.conf
@@ -82,6 +91,8 @@ vi /etc/nginx/nginx.conf
 * Reload configuration: `nginx -s reload`
 
 #### CIVBridge
+
+*Interconnects between web UI, talkkonnect and transceiver.*
 
 ###### Cross compile Qt5 source
 
@@ -150,6 +161,8 @@ Configure USB SEND key to `USB (A) RTS`
 CI-V Address must be `A4h` (= default)
 
 ## Launch
+*(with PC / Smartphone)*
+
 * Establish a VPN connection (optional)
 * Connect with a Mumble client to your Raspi, either by knowing its IP address or by using *hostname.local*
 * Load the webpage, either by knowing Raspi's IP address or by using *hostname.local*
